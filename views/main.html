@@ -1,0 +1,24 @@
+<style>
+	.list-schools {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.list-schools li {
+
+		width: 20%;
+		border: 1px solid blue;
+		padding: 2%;
+	}
+</style>
+
+<div>
+	<h3>{{ schools.length }} schools</h3>
+
+	<ul class="list-schools list-unstyled">
+		<li ng-repeat="school in schools">
+			<h2><a target="_blank" ng-href="{{ school.url[0] }}">{{ school.name }}</a></h2>
+			<p>{{ school.short_description }}</p>
+			<p>tags: {{ school.tags.join(', ') }}</p>
+		</li>
+	</ul>
+</div>
