@@ -4,32 +4,28 @@ angular.module("myServices",['firebase'])
     var ref = firebase.database().ref().child("schools");
     var schools = $firebaseArray(ref);
 
-    // function addSchool( msg ) {
-    //   messages.$add( {
-    //     username: $rootScope.user.name,
-    //     avatar: $rootScope.user.avatar,
-    //     text: msg
-    //   } )
-    // }
+    function addSchool( school ) {
+      schools.$add(school);
+    }
 
     return {
-      schools: schools
-      // addMessage: addMessage
+      schools: schools,
+      addSchool: addSchool
     }
 
   })
-  .factory("AuthService", function( $http, $firebaseAuth, $firebaseArray, $rootScope ) {
+  .factory("AuthService", function( $http, $firebaseAuth, $firebaseObject, $rootScope ) {
 
     var Auth = $firebaseAuth();
     var provider = "google";
 
     function checkAdmin(uid) {
 
-      var ref = firebase.database().ref().child('users').child('google').child(uid).child('roles')
+      var ref = firebase.database().ref().child(`users/${provider}/${uid}/roles`)
 
-      $firebaseArray(ref).$loaded()
-        .then( function(snap) {
-          $rootScope.user.admin = snap.map( o => o.$value ).includes("admin")
+      $firebaseObject(ref).$loaded()
+        .then( function(roles) {
+          $rootScope.user.admin = roles.admin;
         })
 
     }

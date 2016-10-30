@@ -14,11 +14,9 @@
 		<div class="navbar-form navbar-right" role="search">
 			<button ng-hide="user" ng-click="logIn()" type="button" class="btn btn-primary">Log in</button>
 			<div class="login-block" ng-show="user">
-				<p>
-					<img width="32" ng-src="{{ user.avatar }}" alt="">
-					<span>{{ user.email }} </span><strong ng-show="user.admin">(ADMIN)</strong>
-					<button ng-show="user" ng-click="logOut()" type="button" class="btn btn-primary">Log Out</button>
-				</p>
+				<img width="32" ng-src="{{ user.avatar }}" alt="">
+				<span>{{ user.email }} </span><strong ng-show="user.admin"> ADMIN </strong>
+				<button ng-show="user" ng-click="logOut()" type="button" class="btn btn-primary">Log Out</button>
 			</div>
 
 
@@ -26,9 +24,10 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#/">Home</a></li>
-				<li ng-show="user"><a href="#/">My Schools</a></li>
-				<li ng-show="user.admin"><a href="#/add-school">Add School</a></li>
+				<li ng-class="{ 'active' : section == 'home' }"><a href="#/">Home</a></li>
+				<li ng-class="{ 'active' : section == 'my-schools' }" ng-show="user" ><a href="#/">My Schools</a></li>
+				<li ng-class="{ 'active' : section == 'add-school' }" ng-show="user.admin" ><a href="#/add-school">Add School</a></li>
+
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div>

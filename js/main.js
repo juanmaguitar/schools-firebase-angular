@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngRoute', 'myControllers'])
+angular.module('myApp', ['ngRoute', 'ngTagsInput', 'myControllers'])
 	.config( function ($routeProvider) {
 
 		$routeProvider

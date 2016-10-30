@@ -8,8 +8,9 @@ angular.module("myControllers",['myServices'])
 		$scope.logIn = AuthService.logIn;
 		$scope.logOut = AuthService.logOut;
 	})
-	.controller('MainCtrl', function($scope, DataService) {
+	.controller('MainCtrl', function($rootScope, $scope, DataService) {
 
+		$rootScope.section = "home"
 		$scope.schools = DataService.schools;
 
 		$scope.addMessage = function(e) {
@@ -19,14 +20,21 @@ angular.module("myControllers",['myServices'])
 		}
 
 	})
-	.controller('AddSchoolCtrl', function($scope, DataService) {
+	.controller('AddSchoolCtrl', function($rootScope, $scope, DataService, $location) {
 
-		// $scope.schools = DataService.schools;
+		$rootScope.section = "add-school";
+		$scope.title = "Add School"
 
-		// $scope.addMessage = function(e) {
-		// 	e.preventDefault()
-		// 	DataService.addMessage($scope.message);
-		// 	$scope.message = ""
-		// }
+		$scope.addSchool = function(e) {
+			e.preventDefault()
+
+			DataService.addSchool({
+				name: $scope.name,
+				email: $scope.email,
+				description: $scope.description,
+				tags: $scope.tags.map( tag => tag.text )
+			});
+			$location.path("/")
+		}
 
 	})

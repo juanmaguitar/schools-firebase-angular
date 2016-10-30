@@ -1,5 +1,6 @@
 .login-block > strong {
 	background: yellow;
+	color: #000
 }
 
 .login-block  {
@@ -15,4 +16,17 @@
 	width: 20%;
 	border: 1px solid blue;
 	padding: 2%;
+}
+
+.navbar-default .navbar-nav > li {
+	cursor: pointer;
+}
+
+.navbar-default .navbar-nav > li.active > a {
+    color: #272727 !important;
+    background-color: #ffffff !important;
+}
+
+tags-input .tags .tag-item {
+	background: #428bca;
 }

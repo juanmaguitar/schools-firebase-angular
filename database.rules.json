@@ -1,8 +1,12 @@
 {
   "rules": {
+    "users": {
+    	".read": true,
+    	".write": "root.child('users').child(auth.provider).child(auth.uid).child('roles/admin').val() == true"
+    },
   	"schools": {
     	".read": true,
-    	".write": "root.child('users').child(auth.provider).child(auth.id).child('roles').val().contains('admin')"
+			".write": "root.child('users').child(auth.provider).child(auth.uid).child('roles/admin').val() == true"
     }
   }
 }
