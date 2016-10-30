@@ -2,7 +2,7 @@
   "rules": {
   	"schools": {
     	".read": true,
-    	".write": "root.child('admins').child(auth.provider).child(auth.id).exist() == true"
+    	".write": "root.child('users').child(auth.provider).child(auth.id).child('roles').val().contains('admin')"
     }
   }
 }
