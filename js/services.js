@@ -18,17 +18,20 @@ angular.module("myServices",['firebase'])
     }
 
   })
-  .factory("AuthService", function( $http, $firebaseAuth, $firebaseObject, $rootScope ) {
+  .factory("AuthService", function( $http, $firebaseAuth, $firebaseArray, $rootScope ) {
 
     var Auth = $firebaseAuth();
     var provider = "google";
 
     function checkAdmin(uid) {
-      var ref = firebase.database().ref().child("users").child(provider).child(uid);
-      $firebaseObject(ref).$loaded()
-        .then(function(user) {
-          $rootScope.user.admin = user.admin;
-        });
+
+      var ref = firebase.database().ref().child('users').child('google').child(uid).child('roles')
+
+      $firebaseArray(ref).$loaded()
+        .then( function(snap) {
+          $rootScope.user.admin = snap.map( o => o.$value ).includes("admin")
+        })
+
     }
 
     Auth.$onAuthStateChanged(function(authData) {

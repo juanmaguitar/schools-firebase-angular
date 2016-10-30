@@ -1,3 +1,18 @@
 .login-block > strong {
 	background: yellow;
 }
+
+.login-block  {
+	color: #FFF;
+}
+
+.list-schools {
+	display: flex;
+	flex-wrap: wrap;
+}
+.list-schools li {
+
+	width: 20%;
+	border: 1px solid blue;
+	padding: 2%;
+}
