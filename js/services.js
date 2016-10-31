@@ -1,8 +1,13 @@
 angular.module("myServices",['firebase'])
-  .factory("DataService", function( $http, $rootScope, $firebaseArray ) {
+  .factory("DataService", function( $http, $rootScope, $firebaseArray, $firebaseObject ) {
 
     var ref = firebase.database().ref().child("schools");
     var schools = $firebaseArray(ref);
+
+    function getSchool( idSchool ) {
+      var school = ref.child(idSchool);
+      return $firebaseObject(school).$loaded()
+    }
 
     function addSchool( school ) {
       schools.$add(school);
@@ -10,7 +15,9 @@ angular.module("myServices",['firebase'])
 
     return {
       schools: schools,
-      addSchool: addSchool
+      addSchool: addSchool,
+      getSchool: getSchool
+
     }
 
   })

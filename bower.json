@@ -1,0 +1,17 @@
+{
+  "name": "surfSchools-firebase-angular",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "JuanMa Garrido <JuanMa.Garrido@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/juanmaguitar/schools-firebase-angular",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

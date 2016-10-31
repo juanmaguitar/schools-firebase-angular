@@ -38,3 +38,32 @@ angular.module("myControllers",['myServices'])
 		}
 
 	})
+	.controller('EditSchoolCtrl', function($rootScope, $scope, DataService, $location, $routeParams) {
+
+		var idSchool = $routeParams.idSchool;
+
+		$rootScope.section = "edit-school";
+		$scope.title = "Edit School"
+
+		DataService.getSchool(idSchool)
+			.then( school => {
+				$scope.name = school.name;
+				$scope.description = school.description;
+				$scope.tags = school.tags;
+				$scope.email = school.email;
+			})
+
+		// $scope.addSchool = function(e) {
+		// 	e.preventDefault()
+
+		// 	DataService.addSchool({
+		// 		name: $scope.name,
+		// 		email: $scope.email,
+		// 		description: $scope.description,
+		// 		tags: $scope.tags.map( tag => tag.text )
+		// 	});
+		// 	$location.path("/")
+		// }
+
+	})
+

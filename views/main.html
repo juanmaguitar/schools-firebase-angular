@@ -2,10 +2,11 @@
 	<h3>{{ schools.length }} schools</h3>
 
 	<ul class="list-schools list-unstyled">
-		<li ng-repeat="school in schools">
+		<li ng-repeat="school in schools" data-id="{{ $index }}">
 			<h2><a target="_blank" ng-href="{{ school.url[0] }}">{{ school.name }}</a></h2>
 			<p>{{ school.short_description }}</p>
 			<p>tags: {{ school.tags.join(', ') }}</p>
+			<a ng-href="#/edit-school/{{ $index }}" type="button" class="btn btn-primary">Edit School</a>
 		</li>
 	</ul>
 </div>

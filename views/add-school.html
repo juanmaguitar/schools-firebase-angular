@@ -5,6 +5,8 @@
     <!-- Form Name -->
     <legend>{{ title }} </legend>
 
+    <p>{{school | json}}</p>
+
     <!-- Text input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="requestName">Name</label>
@@ -40,7 +42,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="comments">Description</label>
       <div class="col-md-4">
-        <textarea ng-model="description" class="form-control" id="comments" name="description"></textarea>
+        <textarea ng-model="description" rows="10" class="form-control" id="comments" name="description"></textarea>
       </div>
     </div>
 
